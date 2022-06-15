@@ -1,12 +1,23 @@
 # Write your code here
-user_choice = input()
-msg = 'Sorry, but the computer chose'
-computer_choice = None
-if user_choice == "rock":
-    computer_choice = "paper"
-elif user_choice == "paper":
-    computer_choice = "scissors"
-elif user_choice == "scissors":
-    computer_choice = "rock"
+import random
 
-print(f'{msg} {computer_choice}')
+msg_loss = 'Sorry, but the computer chose'
+msg_draw = 'There is a draw'
+msg_win_1 = 'Well done. The computer chose'
+msg_win_2 = 'and failed'
+
+game_options = {'paper': 'rock',
+                'rock': 'scissors',
+                'scissors': 'paper'}
+
+random.seed()
+
+user_choice = input()
+computer_choice = random.choice(list(game_options.values()))
+
+if user_choice == computer_choice:
+    print(f'{msg_draw} ({computer_choice})')
+elif game_options[user_choice] == computer_choice:
+    print(f'{msg_win_1} {computer_choice} {msg_win_2}')
+else:
+    print(f'{msg_loss} {computer_choice}')
