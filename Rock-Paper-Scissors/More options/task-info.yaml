@@ -220,6 +220,13 @@ files:
     if __name__ == '__main__':
         RPSTest().run_tests()
   learner_created: false
+- name: rating.txt
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/7209#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">JetBrains
+    Academy</a> to continue learning.
+  time: Fri, 17 Jun 2022 02:34:27 UTC
 record: -1

@@ -1,23 +1,21 @@
 # Write your code here
 import random
 
-user_ratings_file_name = 'rating.txt'
+user_ratings_file_name = "rating.txt"
 
-msg_enter_name = 'Enter your name: '
-msg_hello = 'Hello,'
-msg_rating = 'Your rating:'
-msg_loss = 'Sorry, but the computer chose'
-msg_draw = 'There is a draw'
-msg_win_1 = 'Well done. The computer chose'
-msg_win_2 = 'and failed'
-msg_invalid = 'Invalid input'
-msg_bye = 'Bye!'
+msg_enter_name = "Enter your name: "
+msg_hello = "Hello,"
+msg_start = "Okay, let's start"
+msg_rating = "Your rating:"
+msg_loss = "Sorry, but the computer chose"
+msg_draw = "There is a draw"
+msg_win_1 = "Well done. The computer chose"
+msg_win_2 = "and failed"
+msg_invalid = "Invalid input"
+msg_bye = "Bye!"
 
-play_options = {'paper': 'rock',
-                'rock': 'scissors',
-                'scissors': 'paper'}
-exit_option = '!exit'
-rating_option = '!rating'
+exit_option = "!exit"
+rating_option = "!rating"
 
 game_result_win = "WIN"
 game_result_draw = "DRAW"
@@ -27,7 +25,7 @@ win_score_value = 100
 
 
 def lookup_user(user):
-    ratings_file = open(user_ratings_file_name, 'rt')
+    ratings_file = open(user_ratings_file_name, "rt")
     result = 0
     for line in ratings_file:
         current_user, rating = line.split()
@@ -59,9 +57,15 @@ random.seed()
 
 print(msg_enter_name)
 user_name = input()
-print(f'{msg_hello} {user_name}')
+print(f"{msg_hello} {user_name}")
 
 user_rating = lookup_user(user_name)
+
+plays = ['rock', 'paper', 'scissors']
+plays_input = input()
+if plays_input != "":
+    plays = [play.lower() for play in plays_input.split(",")]
+print(msg_start)
 
 while True:
     user_choice = input()
@@ -70,18 +74,19 @@ while True:
         break
 
     elif user_choice == rating_option:
-        print(f'{msg_rating} {user_rating}')
+        print(f"{msg_rating} {user_rating}")
+        continue
 
-    computer_choice = random.choice(list(play_options.values()))
-
-    if user_choice not in play_options:
+    if user_choice not in plays:
         print(msg_invalid)
     else:
+        computer_choice = random.choice(plays)
+        new_plays = plays[plays.index(user_choice) + 1:] + plays[:plays.index(user_choice)]
         if user_choice == computer_choice:
-            print(f'{msg_draw} ({computer_choice})')
+            print(f"{msg_draw} ({computer_choice})")
             user_rating = update_rating(game_result_draw, user_rating)
-        elif play_options[user_choice] == computer_choice:
-            print(f'{msg_win_1} {computer_choice} {msg_win_2}')
+        elif new_plays.index(computer_choice) >= len(new_plays) // 2:
+            print(f"{msg_win_1} {computer_choice} {msg_win_2}")
             user_rating = update_rating(game_result_win, user_rating)
         else:
-            print(f'{msg_loss} {computer_choice}')
+            print(f"{msg_loss} {computer_choice}")
