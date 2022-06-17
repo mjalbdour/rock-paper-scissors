@@ -99,7 +99,7 @@ files:
     if __name__ == '__main__':
         RPSTest().run_tests()
   learner_created: false
-feedback_link: https://hyperskill.org/projects/78/stages/432/implement#comment
+feedback_link: https://hyperskill.org/learn/step/7206#comment
 status: Solved
 feedback:
   message: Congratulations!

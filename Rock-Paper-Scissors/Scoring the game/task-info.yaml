@@ -154,6 +154,9 @@ files:
     if __name__ == '__main__':
         RPSTest().run_tests()
   learner_created: false
-feedback_link: https://hyperskill.org/projects/78/stages/434/implement#comment
-status: Unchecked
+feedback_link: https://hyperskill.org/learn/step/7208#comment
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Fri, 17 Jun 2022 00:25:12 UTC
 record: -1
