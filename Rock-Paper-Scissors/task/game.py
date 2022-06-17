@@ -82,6 +82,6 @@ while True:
             user_rating = update_rating(game_result_draw, user_rating)
         elif play_options[user_choice] == computer_choice:
             print(f'{msg_win_1} {computer_choice} {msg_win_2}')
-            user_rating += win_score_value
+            user_rating = update_rating(game_result_win, user_rating)
         else:
             print(f'{msg_loss} {computer_choice}')
